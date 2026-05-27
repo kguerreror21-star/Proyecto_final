@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Iniciar sesion | Adventurero{% endblock %}
+{% block content %}
+<section class="form-panel">
+    <h1>Iniciar sesion</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+            {{ form.non_field_errors }}
+        {% endif %}
+        <p>
+            <label for="{{ form.username.id_for_label }}">Correo electronico</label>
+            {{ form.username }}
+            {{ form.username.errors }}
+        </p>
+        <p>
+            <label for="{{ form.password.id_for_label }}">Contrasena</label>
+            {{ form.password }}
+            {{ form.password.errors }}
+        </p>
+        {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+        {% endif %}
+        <button class="btn-link" type="submit">Iniciar sesion</button>
+    </form>
+    <p>¿No tienes una cuenta? <a href="{% url 'register' %}">Registrate</a></p>
+</section>
+{% endblock %}

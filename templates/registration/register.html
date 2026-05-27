@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Registro | Adventurero{% endblock %}
+{% block content %}
+<section class="form-panel">
+    <h1>Crea una cuenta</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn-link" type="submit">Registrarse</button>
+    </form>
+    <p>¿Ya tienes una cuenta? <a href="{% url 'login' %}">Inicia sesion</a></p>
+</section>
+{% endblock %}

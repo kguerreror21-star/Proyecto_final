@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Adventurero{% endblock %}</title>
+    <link rel="icon" href="{% static 'img/logo_adventurero.png' %}">
+    <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tours.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <style>
+        .messages { max-width: 1120px; margin: 20px auto 0; padding: 0 20px; }
+        .message { padding: 12px 16px; border-radius: 8px; background: #eef6ff; color: #14324a; margin-bottom: 8px; border-left: 4px solid #2c7be5; }
+        .message.error { background: #fff1f1; color: #8a1f1f; border-left-color: #d93025; }
+        .message.success { background: #effaf3; color: #145a2f; border-left-color: #2e9d58; }
+        .form-panel { max-width: 760px; margin: 48px auto; padding: 0 20px; }
+        .form-panel form { display: grid; gap: 16px; }
+        .form-panel input, .form-panel select, .form-panel textarea { width: 100%; padding: 12px 14px; border: 1px solid #d8dde6; border-radius: 8px; }
+        .form-panel input:focus, .form-panel select:focus, .form-panel textarea:focus { outline: 2px solid #a9d4ff; border-color: #2c7be5; }
+        .form-panel label { font-weight: 700; display: block; margin-bottom: 6px; }
+        .errorlist { color: #9f1d1d; background: #fff1f1; border-radius: 8px; padding: 10px 14px; margin: 6px 0; list-style-position: inside; }
+        .helptext { display: block; color: #667085; font-size: .9rem; margin-top: 6px; }
+        .tour-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+        .tour-card { border: 1px solid #e6e9ef; border-radius: 8px; overflow: hidden; background: #fff; }
+        .tour-card:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(21, 34, 56, .10); transition: .2s ease; }
+        .tour-card img { width: 100%; height: 190px; object-fit: cover; display: block; }
+        .tour-card-body { padding: 18px; display: grid; gap: 10px; }
+        .toolbar { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0; }
+        .toolbar input, .toolbar select { padding: 11px 12px; border: 1px solid #d8dde6; border-radius: 8px; }
+        .btn-link { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 8px; padding: 12px 16px; background: #152238; color: #fff; text-decoration: none; cursor: pointer; }
+        .btn-muted { background: #eef1f6; color: #152238; }
+        .meta-list { display: flex; flex-wrap: wrap; gap: 10px; color: #566174; font-size: .95rem; }
+        .empty-state { padding: 40px 0; color: #566174; }
+        .inline-logout { margin: 0; }
+        .inline-logout button { font: inherit; border: 0; }
+        .menu-responsive ul { list-style: none; }
+        @media (max-width: 820px) {
+            .container-sign { display: none; }
+            .menu-responsive { padding: 28px; }
+            .menu-responsive.active { transform: translateX(0); opacity: 1; pointer-events: auto; }
+            .toolbar { flex-direction: column; align-items: stretch; }
+            .btn-link { width: 100%; }
+        }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <button class="viewport-toggle" type="button" aria-pressed="false" aria-label="Cambiar vista">
+        <span class="viewport-toggle__icon" aria-hidden="true">
+            <i class="fa-solid fa-desktop"></i>
+        </span>
+        <span class="viewport-toggle__text">Desktop</span>
+    </button>
+
+    <header class="header container">
+        <a href="{% url 'home' %}" class="container-logo">
+            <img src="{% static 'img/logo_adventurero.png' %}" alt="Logo">
+            <span class="logo-text">Adventurero</span>
+        </a>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="{% url 'tour_list' %}">Tours</a></li>
+                <li><a href="{% url 'destinations' %}">Destinos</a></li>
+                <li><a href="{% url 'about' %}">Acerca de</a></li>
+                <li><a href="{% url 'contact' %}">Contacto</a></li>
+            </ul>
+        </nav>
+        <ul class="container-sign">
+            {% if user.is_authenticated %}
+                <li class="sign-item"><a class="sign-in" href="{% url 'my_bookings' %}">Mis reservas</a></li>
+                <li class="sign-item">
+                    <form class="inline-logout" method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button class="sign-up" type="submit">Salir</button>
+                    </form>
+                </li>
+            {% else %}
+                <li class="sign-item"><a class="sign-in" href="{% url 'login' %}">Entrar</a></li>
+                <li class="sign-item"><a class="sign-up" href="{% url 'register' %}">Registrarse</a></li>
+            {% endif %}
+        </ul>
+        <button class="btn-bars" type="button"><i class="fa-solid fa-bars-staggered"></i></button>
+        <nav class="menu-responsive">
+            <a href="{% url 'home' %}" class="container-logo-responsive">
+                <img src="{% static 'img/logo_adventurero.png' %}" alt="Logo">
+                <span class="logo-text">Adventurero</span>
+            </a>
+            <ul>
+                <li><a href="{% url 'tour_list' %}">Tours</a></li>
+                <li><a href="{% url 'destinations' %}">Destinos</a></li>
+                <li><a href="{% url 'about' %}">Acerca de</a></li>
+                <li><a href="{% url 'contact' %}">Contacto</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'my_bookings' %}">Mis reservas</a></li>
+                    <li>
+                        <form class="inline-logout" method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button class="sign-up" type="submit">Salir</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Entrar</a></li>
+                    <li><a href="{% url 'register' %}">Registrarse</a></li>
+                {% endif %}
+            </ul>
+            <button class="btn-close" type="button"><i class="fa-solid fa-xmark"></i></button>
+        </nav>
+    </header>
+
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% block content %}{% endblock %}
+
+    {% include "partials/footer.html" %}
+
+    <section class="travel-chatbot" aria-live="polite">
+        <button class="chatbot-toggle" type="button" aria-expanded="false" aria-label="Abrir chat de Adventurero">
+            <i class="fa-solid fa-comments"></i>
+        </button>
+
+        <div class="chatbot-panel" aria-label="Chatbot Adventurero">
+            <div class="chatbot-header">
+                <div>
+                    <span class="chatbot-kicker">Asistente virtual</span>
+                    <strong>Adventurero Bot</strong>
+                </div>
+                <button class="chatbot-close" type="button" aria-label="Cerrar chat">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="chatbot-messages" role="log" aria-label="Historial del chat"></div>
+
+            <div class="chatbot-quick-actions" aria-label="Acciones rapidas del chat">
+                <button type="button" data-chat-message="Ver tours">Ver tours</button>
+                <button type="button" data-chat-message="Contacto">Contacto</button>
+                <button type="button" data-chat-message="Reservas">Reservas</button>
+                <button type="button" data-chat-message="Metodos de pago">Metodos de pago</button>
+            </div>
+
+            <form class="chatbot-form">
+                <label class="sr-only" for="chatbot-input">Escribe tu pregunta</label>
+                <input id="chatbot-input" type="text" autocomplete="off" placeholder="Preguntame por tours, pagos o reservas">
+                <button type="submit" aria-label="Enviar mensaje">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <script src="{% static 'js/global.js' %}"></script>
+</body>
+</html>

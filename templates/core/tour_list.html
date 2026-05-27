@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Tours | Adventurero{% endblock %}
+{% block content %}
+<section class="container" id="travel-tours">
+    <div class="content-section">
+        <span>Paquetes disponibles</span>
+        <h1>Elige tu paquete de viaje favorito</h1>
+    </div>
+
+    <form class="toolbar" method="get">
+        <input type="search" name="q" value="{{ query }}" placeholder="Buscar por pais o lugar">
+        <select name="category">
+            <option value="">Todas las categorias</option>
+            {% for category in categories %}
+                <option value="{{ category.slug }}" {% if selected_category == category.slug %}selected{% endif %}>{{ category.name }}</option>
+            {% endfor %}
+        </select>
+        <button class="btn-link" type="submit"><i class="fa-solid fa-search"></i> Buscar</button>
+        {% if user.is_authenticated and user.profile.can_manage_tours %}
+            <a class="btn-link btn-muted" href="{% url 'tour_create' %}"><i class="fa-solid fa-plus"></i> Crear tour</a>
+        {% endif %}
+    </form>
+
+    <div class="tour-grid">
+        {% for tour in tours %}
+            {% include "core/partials/tour_card.html" %}
+        {% empty %}
+            <p class="empty-state">No hay tours que coincidan con tu busqueda.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

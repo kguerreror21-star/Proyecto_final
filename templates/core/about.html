@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Acerca de | Adventurero{% endblock %}
+{% block content %}
+<section class="container section-about">
+    <div class="container-img"><img src="{% static 'img/about.jpg' %}" alt="Equipo Adventurero"></div>
+    <div class="content-about">
+        <span>Sobre nosotros</span>
+        <h1>La historia detras de nuestros viajes</h1>
+        <p>Adventurero conecta viajeros con experiencias culturales y de aventura. Esta version ya funciona con Django, base de datos, usuarios, roles y reservas.</p>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,146 @@
+
+.container-login {
+    display: flex;
+    min-height: 100vh;
+    background: #f5f5f5;
+}
+
+.column {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-content-login {
+    width: 100%;
+    max-width: 420px;
+}
+
+.container-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+}
+
+.container-logo img {
+    width: 35px;
+}
+
+.container-form h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.container-form p {
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.container-buttons button {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.container-buttons button i {
+    margin-right: 10px;
+}
+
+.container-divider {
+    display: flex;
+    align-items: center;
+    margin: 25px 0;
+}
+
+.divider {
+    flex: 1;
+    height: 1px;
+    background: #ccc;
+}
+
+.text-divider {
+    margin: 0 10px;
+    color: #777;
+}
+
+.container-input {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.container-input input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+.container-input i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777;
+}
+
+form a {
+    display: block;
+    margin-bottom: 25px;
+    font-size: 14px;
+    color: #ff7a1a;
+    text-decoration: none;
+}
+
+#btn-login {
+    width: 100%;
+    padding: 15px;
+    background: #ff7a1a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#btn-login:hover {
+    background: #e96d10;
+}
+
+.link {
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.link a {
+    color: #ff7a1a;
+    text-decoration: none;
+}
+
+.column-img {
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-img {
+    width: 85%;
+}
+
+.container-img img {
+    width: 100%;
+    height: 90vh;
+    object-fit: cover;
+    border-radius: 25px;
+}

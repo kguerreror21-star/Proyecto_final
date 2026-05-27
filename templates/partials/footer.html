@@ -1,0 +1,66 @@
+{% load static %}
+<footer>
+    <div class="container footer-content">
+        <div class="columns-footer">
+            <div class="column">
+                <a href="{% url 'home' %}" class="container-logo">
+                    <img src="{% static 'img/logo_adventurero.png' %}" alt="Logo Adventurero">
+                    <span class="logo-text">Adventurero</span>
+                </a>
+                <p>
+                    Agencia de viajes especializada en experiencias turisticas,
+                    culturales y de aventura. Planeamos rutas seguras,
+                    memorables y ajustadas a cada viajero.
+                </p>
+                <div class="container-social-links">
+                    <span>Siguenos</span>
+                    <div class="links">
+                        <a href="https://www.facebook.com/" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="https://www.instagram.com/" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://x.com/" aria-label="X">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <span>Enlaces</span>
+                <ul>
+                    <li><a href="{% url 'home' %}">Inicio</a></li>
+                    <li><a href="{% url 'tour_list' %}">Tours</a></li>
+                    <li><a href="{% url 'destinations' %}">Destinos</a></li>
+                    <li><a href="{% url 'about' %}">Acerca de</a></li>
+                    <li><a href="{% url 'contact' %}">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="column" id="travel-contact">
+                <span>Contacto</span>
+                <ul>
+                    <li><a href="tel:+573001234567">+57 300 123 4567</a></li>
+                    <li><a href="mailto:info@adventurero.com">info@adventurero.com</a></li>
+                    <li><a href="{% url 'contact' %}">Cra. 10 # 20-30, Bogota, Colombia</a></li>
+                </ul>
+            </div>
+
+            <div class="column">
+                <span>Informacion</span>
+                <p>
+                    Atencion de lunes a sabado de 8:00 a. m. a 6:00 p. m.
+                    Reservas, asesoria y acompanamiento durante tu viaje.
+                </p>
+                <div class="container-payment-methods" id="travel-payments">
+                    <img src="{% static 'img/payment-methods.png' %}" alt="Metodos de pago">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright &copy; 2026 Adventurero. Todos los derechos reservados.</p>
+    </div>
+</footer>

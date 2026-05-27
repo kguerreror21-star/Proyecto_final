@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Reservar | Adventurero{% endblock %}
+{% block content %}
+<section class="form-panel" id="travel-booking">
+    <h1>Reservar {{ tour.place }}</h1>
+    <p>Precio por persona: ${{ tour.price }}. Capacidad maxima: {{ tour.capacity }} personas.</p>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn-link" type="submit">Confirmar reserva</button>
+    </form>
+</section>
+{% endblock %}

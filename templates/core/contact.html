@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Contacto | Adventurero{% endblock %}
+{% block content %}
+<section class="form-panel">
+    <h1>Contacto</h1>
+    <p>Escribenos para planear tu siguiente viaje con Adventurero.</p>
+    <form>
+        <p><label>Nombre<input type="text" placeholder="Tu nombre"></label></p>
+        <p><label>Correo<input type="email" placeholder="tu@email.com"></label></p>
+        <p><label>Mensaje<textarea rows="5" placeholder="Cuentanos que destino tienes en mente"></textarea></label></p>
+        <button class="btn-link" type="button">Enviar</button>
+    </form>
+</section>
+{% endblock %}

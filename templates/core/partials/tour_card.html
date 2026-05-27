@@ -1,0 +1,19 @@
+{% load static %}
+<article class="tour-card">
+    {% if tour.image %}
+        <img src="{{ tour.image.url }}" alt="{{ tour.place }}">
+    {% else %}
+        <img src="{% static 'img/tours/tour-1.avif' %}" alt="{{ tour.place }}">
+    {% endif %}
+    <div class="tour-card-body">
+        <strong>{{ tour.country }}</strong>
+        <h3>{{ tour.place }}</h3>
+        <p>{{ tour.description|truncatewords:22 }}</p>
+        <div class="meta-list">
+            <span><i class="fa-solid fa-clock"></i> {{ tour.days }} dias</span>
+            <span><i class="fa-solid fa-user-group"></i> {{ tour.capacity }} personas</span>
+            <span><i class="fa-solid fa-tag"></i> ${{ tour.price }}</span>
+        </div>
+        <a class="btn-link" href="{{ tour.get_absolute_url }}" aria-label="Ver detalle de {{ tour.place }}">Ver detalle</a>
+    </div>
+</article>

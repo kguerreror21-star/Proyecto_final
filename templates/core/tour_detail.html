@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}{{ tour.place }} | Adventurero{% endblock %}
+{% block content %}
+<section class="container" style="padding-top: 36px;">
+    <div class="tour-grid" style="align-items: start;">
+        <div>
+            {% if tour.image %}
+                <img style="width:100%; border-radius:8px;" src="{{ tour.image.url }}" alt="{{ tour.place }}">
+            {% endif %}
+        </div>
+        <div>
+            <span>{{ tour.category.name }}</span>
+            <h1>{{ tour.place }}, {{ tour.country }}</h1>
+            <p>{{ tour.description }}</p>
+            <div class="meta-list">
+                <span>${{ tour.price }}</span>
+                <span>{{ tour.days }} dias</span>
+                <span>{{ tour.capacity }} personas</span>
+            </div>
+            <p id="travel-booking" style="margin-top: 20px;">
+                <a class="btn-link" href="{% url 'booking_create' tour.pk %}">Reservar este tour</a>
+                {% if user.is_authenticated and user.profile.can_manage_tours %}
+                    <a class="btn-link btn-muted" href="{% url 'tour_update' tour.pk %}">Editar</a>
+                    <a class="btn-link btn-muted" href="{% url 'tour_delete' tour.pk %}">Eliminar</a>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+
+    <div class="form-panel">
+        <h2>Comentarios</h2>
+        {% if user.is_authenticated %}
+            <form method="post">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button class="btn-link" type="submit">Publicar comentario</button>
+            </form>
+        {% else %}
+            <p><a href="{% url 'login' %}?next={{ request.path }}">Inicia sesion</a> para comentar este tour.</p>
+        {% endif %}
+        {% for comment in comments %}
+            <article class="tour-card-body" style="border-bottom:1px solid #e6e9ef;">
+                <strong>{{ comment.user.first_name|default:comment.user.username }} - {{ comment.rating }}/5</strong>
+                <p>{{ comment.body }}</p>
+            </article>
+        {% empty %}
+            <p class="empty-state">Se el primero en comentar este tour.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

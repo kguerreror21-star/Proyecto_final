@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Gestionar tour | Adventurero{% endblock %}
+{% block content %}
+<section class="form-panel">
+    <h1>{% if object %}Editar tour{% else %}Crear tour{% endif %}</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn-link" type="submit">Guardar</button>
+    </form>
+</section>
+{% endblock %}

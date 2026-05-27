@@ -1,0 +1,7 @@
+.env
+__pycache__/
+*.py[cod]
+.pytest_cache/
+staticfiles/
+node_modules/
+.vercel/

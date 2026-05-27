@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Inicio | Adventurero{% endblock %}
+{% block content %}
+<section class="container hero-banner">
+    <div class="content">
+        <span>Explora con nosotros</span>
+        <h1>Descubre tu siguiente aventura con nosotros</h1>
+        <p>Encuentra tours reales, reserva con tu cuenta y administra experiencias desde una base de datos.</p>
+        <div class="buttons-hero-banner">
+            <a href="{% url 'tour_list' %}" class="btn btn-banner-primary">Reserva ahora</a>
+            <a href="{% url 'about' %}" class="btn btn-banner-secondary">Saber mas</a>
+        </div>
+    </div>
+    <div class="container-images-banner">
+        <div class="container-main-image">
+            <img src="{% static 'img/home/banner-hero-main.avif' %}" alt="Destino principal" class="main-image">
+        </div>
+        <img src="{% static 'img/home/banner-hero-1.avif' %}" alt="Destino">
+        <img src="{% static 'img/home/banner-hero-2.avif' %}" alt="Destino">
+        <img src="{% static 'img/home/banner-hero-3.avif' %}" alt="Destino">
+        <img src="{% static 'img/home/banner-hero-4.avif' %}" alt="Destino">
+    </div>
+</section>
+
+<section class="container section-tours" id="travel-tours">
+    <div class="content-section">
+        <span>Tours destacados</span>
+        <h2>Experiencias disponibles</h2>
+    </div>
+    <div class="tour-grid">
+        {% for tour in featured_tours %}
+            {% include "core/partials/tour_card.html" %}
+        {% empty %}
+            <p class="empty-state">Aun no hay tours destacados. Ejecuta los datos iniciales o crea uno desde el panel.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

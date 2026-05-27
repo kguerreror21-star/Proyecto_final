@@ -1,0 +1,267 @@
+
+.hero-banner {
+    margin-top: 60px;
+}
+
+.hero-banner h1 {
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 50px;
+}
+
+.content-banner {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-images-banner {
+    position: relative;
+    width: 50%;
+    min-height: 380px;
+}
+
+.container-images-banner img {
+    width: 180px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 15px;
+    position: absolute;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.container-main-image {
+    position: absolute;
+    left: 60px;
+    top: 40px;
+}
+
+.container-main-image img {
+    width: 260px;
+    height: 190px;
+    border-radius: 18px;
+}
+
+.container-images-banner img:nth-child(2) {
+    top: 0;
+    left: 0;
+}
+
+.container-images-banner img:nth-child(3) {
+    bottom: 0;
+    left: 120px;
+}
+
+.container-images-banner img:nth-child(4) {
+    top: 90px;
+    right: 20px;
+}
+
+.content-about {
+    width: 50%;
+}
+
+.content-about h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.content-about p {
+    margin-bottom: 25px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.content-about ul {
+    list-style: none;
+    padding: 0;
+}
+
+.content-about ul li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    font-weight: 500;
+}
+
+.container-icon {
+    width: 32px;
+    height: 32px;
+    background: #ff7a1a;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.info-about {
+    margin-top: 80px;
+}
+
+.content-info-about {
+    margin-bottom: 40px;
+}
+
+.content-info-about h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.content-info-about p {
+    line-height: 1.7;
+    color: #555;
+}
+
+
+.container-team-founder {
+    margin-top: 80px;
+}
+
+.title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+.container-cards-team {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.card-team {
+    width: 280px;
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+.card-team:hover {
+    transform: translateY(-8px);
+}
+
+.container-img img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+.content-card {
+    padding: 20px;
+    text-align: center;
+}
+
+.content-card h3 {
+    margin-bottom: 5px;
+}
+
+.content-card p {
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.social-links a {
+    color: #555;
+    margin: 0 8px;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    color: #ff7a1a;
+}
+
+
+.section-faq {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+.container-faq-items {
+    max-width: 900px;
+    margin: auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid #ddd;
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 18px 0;
+    font-size: 16px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+}
+
+.faq-question i.fa-minus {
+    display: none;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+    padding-bottom: 15px;
+}
+
+.faq-item.active .fa-plus {
+    display: none;
+}
+
+.faq-item.active .fa-minus {
+    display: inline;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.faq-answer p {
+    color: #555;
+    line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+    .content-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .container-images-banner,
+    .content-about {
+        width: 100%;
+    }
+
+    .container-images-banner {
+        min-height: 350px;
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-banner h1 {
+        font-size: 28px;
+    }
+
+    .content-about h2 {
+        font-size: 20px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+}

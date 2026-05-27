@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Destinos | Adventurero{% endblock %}
+{% block content %}
+<section class="container">
+    <div class="content-section">
+        <span>Destinos</span>
+        <h1>Lugares para tu proxima aventura</h1>
+    </div>
+    <div class="tour-grid">
+        <article class="tour-card"><img src="{% static 'img/sitios/suiza.jpg' %}" alt="Suiza"><div class="tour-card-body"><h3>Suiza</h3><p>Montanas, lagos y ciudades historicas.</p></div></article>
+        <article class="tour-card"><img src="{% static 'img/sitios/egipto.jpg' %}" alt="Egipto"><div class="tour-card-body"><h3>Egipto</h3><p>Piramides, desierto y cultura milenaria.</p></div></article>
+        <article class="tour-card"><img src="{% static 'img/sitios/india.jpg' %}" alt="India"><div class="tour-card-body"><h3>India</h3><p>Templos, gastronomia y patrimonio.</p></div></article>
+    </div>
+</section>
+{% endblock %}

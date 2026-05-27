@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Mis reservas | Adventurero{% endblock %}
+{% block content %}
+<section class="container">
+    <div class="content-section">
+        <span>Cuenta</span>
+        <h1>Mis reservas</h1>
+    </div>
+    <div class="tour-grid">
+        {% for booking in bookings %}
+            <article class="tour-card-body tour-card">
+                <h3>{{ booking.tour.place }}</h3>
+                <p>{{ booking.travel_date }} - {{ booking.people }} personas</p>
+                <p>Estado: {{ booking.get_status_display }}</p>
+                <strong>Total: ${{ booking.total_price }}</strong>
+            </article>
+        {% empty %}
+            <p class="empty-state">Todavia no tienes reservas.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
