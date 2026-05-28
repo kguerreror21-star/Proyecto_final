@@ -1,11 +1,9 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "adventurero/wsgi.py",
-      "use": "@vercel/python"
+  "functions": {
+    "adventurero/wsgi.py": {
+      "runtime": "python3.12"
     }
-  ],
+  },
   "routes": [
     {
       "src": "/(.*)",
