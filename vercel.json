@@ -1,13 +1,8 @@
 {
-  "functions": {
-    "adventurero/wsgi.py": {
-      "runtime": "python3.12"
-    }
-  },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "adventurero/wsgi.py"
+      "dest": "api/index.py"
     }
   ]
 }
